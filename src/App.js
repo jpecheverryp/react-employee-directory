@@ -6,7 +6,20 @@ import API from "./utils/API";
 
 function App() {
   const [employeesState, setEmployeesState] = useState([
-    {}
+    {
+      dob: {
+        age: 0,
+        date: ""
+      },
+      email: "",
+      name: "",
+      phone: "",
+      picture: {
+        thumbnail: ""
+      },
+      id: ""
+      
+    }
   ])
 
   useEffect(() => {

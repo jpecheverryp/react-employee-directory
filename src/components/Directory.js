@@ -1,7 +1,7 @@
 import React from "react";
+import EmployeeRow from "./EmployeeRow"
 
-function Directory(props) {
-    console.log(props);
+function Directory({employees}) {
     return (
         <table>
             <thead>
@@ -14,7 +14,10 @@ function Directory(props) {
                 </tr>
             </thead>
             <tbody>
-
+                {employees.map(employee => {
+                    return <EmployeeRow key={employee.id} {...employee} />
+                })}
+                
             </tbody>
         </table>
     )
