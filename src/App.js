@@ -1,19 +1,27 @@
+import React, {useState, useEffect} from "react";
 import Header from "./components/Header"
 import Directory from "./components/Directory"
 
 import API from "./utils/API";
 
 function App() {
-  console.log('hello');
-  API.getEmployees()
-  .then(data => console.log(data))
-  .catch((err => {
-    console.error(err);
-  }))
+  const [employeesState, setEmployeesState] = useState([
+    {}
+  ])
+
+  useEffect(() => {
+    API.getEmployees()
+    .then(res => {
+      setEmployeesState(res)
+    })
+    .catch(error => console.error(error));
+    
+  }, [])
+
   return (
     <>
     <Header/>
-    <Directory/>
+    <Directory employees={employeesState}/>
     </>
   );
 }

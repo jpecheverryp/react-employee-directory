@@ -1,6 +1,7 @@
 import React from "react";
 
-function Directory() {
+function Directory(props) {
+    console.log(props);
     return (
         <table>
             <thead>
@@ -13,7 +14,7 @@ function Directory() {
                 </tr>
             </thead>
             <tbody>
-                
+
             </tbody>
         </table>
     )
