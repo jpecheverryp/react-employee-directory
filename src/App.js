@@ -2,15 +2,12 @@ import React, {useState, useEffect} from "react";
 import Header from "./components/Header"
 import Directory from "./components/Directory"
 
-import API from "./utils/API";
+import getEmployees from "./utils/API";
 
 function App() {
   const [employeesState, setEmployeesState] = useState([
     {
-      dob: {
-        age: 0,
-        date: ""
-      },
+      dob: "",
       email: "",
       name: "",
       phone: "",
@@ -23,7 +20,7 @@ function App() {
   ])
 
   useEffect(() => {
-    API.getEmployees()
+    getEmployees()
     .then(res => {
       setEmployeesState(res)
     })

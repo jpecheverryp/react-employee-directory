@@ -1,7 +1,6 @@
 import React from "react";
 
 function EmployeeRow(props) {
-    console.log(props);
     return (
         <tr>
             <td>
@@ -10,7 +9,7 @@ function EmployeeRow(props) {
             <td>{props.name}</td>
             <td>{props.phone}</td>
             <td>{props.email}</td>
-            <td>{props.dob.date}</td>
+            <td>{props.dob}</td>
         </tr>
     )
 }

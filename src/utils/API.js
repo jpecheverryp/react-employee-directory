@@ -1,7 +1,7 @@
 import axios from "axios";
+import dateParser from "./dateParser";
 
-export default {
-    getEmployees: async function() {
+export default async function getEmployees() {
         try {
             const response = await axios.get("https://randomuser.me/api/?results=20");
             const apiInfo = response.data.results;
@@ -19,7 +19,7 @@ export default {
                     name: name.first + " " + name.last,
                     phone,
                     email,
-                    dob,
+                    dob: dateParser(dob.date) ,
                     id: login.uuid
                 }
             })
@@ -29,4 +29,3 @@ export default {
         }
         
     }
-}
