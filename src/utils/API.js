@@ -5,7 +5,6 @@ export default async function getEmployees() {
         try {
             const response = await axios.get("https://randomuser.me/api/?results=20");
             const apiInfo = response.data.results;
-            console.log(apiInfo);
             const myObject = apiInfo.map(({
                 picture,
                 name,

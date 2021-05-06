@@ -15,7 +15,6 @@ function App() {
         thumbnail: ""
       },
       id: ""
-      
     }
   ])
 
@@ -28,10 +27,18 @@ function App() {
     
   }, [])
 
+  function handleClickEvent(e) {
+    const newState = [...employeesState].sort((a,b) => (a.name > b.name ? 1 : -1))
+    console.log(employeesState);
+    setEmployeesState(newState);
+  }
+
+
+
   return (
     <>
     <Header/>
-    <Directory employees={employeesState}/>
+    <Directory  employees={employeesState} handleClickEvent={handleClickEvent}/>
     </>
   );
 }
