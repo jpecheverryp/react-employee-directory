@@ -1,10 +1,10 @@
 import React from "react";
 import EmployeeRow from "./EmployeeRow"
-
+import './Directory.css'
 function Directory({ employees, handleClickEvent }) {
 
     return (
-        <table>
+        <table className="employees-table">
             <thead>
                 <tr>
                     <th>Image</th>

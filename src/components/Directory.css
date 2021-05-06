@@ -1,0 +1,22 @@
+.employees-table {
+    width: 90%;
+    margin: 3rem auto 0;
+    
+}
+
+tr:nth-child(even) {
+background: #ccc;
+}
+
+td, th {
+    text-align: center;
+}
+
+th {
+    padding-bottom: 1rem;
+    border-bottom: 1px #aaa solid;
+}
+
+td {
+    padding: 0.8rem 0.75rem;
+}

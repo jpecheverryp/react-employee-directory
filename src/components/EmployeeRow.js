@@ -1,6 +1,8 @@
 import React from "react";
 
 function EmployeeRow(props) {
+
+    const emailHref = 'mailto:' + props.email
     return (
         <tr>
             <td>
@@ -8,7 +10,7 @@ function EmployeeRow(props) {
             </td>
             <td>{props.name}</td>
             <td>{props.phone}</td>
-            <td>{props.email}</td>
+            <td><a href={emailHref}>{props.email}</a></td>
             <td>{props.dob}</td>
         </tr>
     )
