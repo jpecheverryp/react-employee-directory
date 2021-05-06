@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header"
 import Directory from "./components/Directory"
 
@@ -18,27 +18,49 @@ function App() {
     }
   ])
 
+  const [orderState, setOrderState] = useState({
+    column: '',
+    direction: ''
+  })
+
   useEffect(() => {
     getEmployees()
-    .then(res => {
-      setEmployeesState(res)
-    })
-    .catch(error => console.error(error));
-    
+      .then(res => {
+        setEmployeesState(res)
+      })
+      .catch(error => console.error(error));
+
   }, [])
 
   function handleClickEvent(e) {
-    const newState = [...employeesState].sort((a,b) => (a.name > b.name ? 1 : -1))
-    console.log(employeesState);
+    // Check which column is being selected
+    const column = e.target.innerText.toLowerCase();
+    let newState = []
+    let newDirection = ''
+    // Check if we are already ordering by that column
+    if (orderState.column === column && orderState.direction === 'ascending') {
+      // Order to descending
+      newState = [...employeesState].sort((a, b) => (a[column] < b[column] ? 1 : -1))
+      newDirection = 'descending';
+    } else {
+      // Order to ascending
+      newState = [...employeesState].sort((a, b) => (a[column] > b[column] ? 1 : -1))
+      newDirection = 'ascending';
+    }
     setEmployeesState(newState);
+    setOrderState({
+      column: column,
+      direction: newDirection
+    })
+
   }
 
 
 
   return (
     <>
-    <Header/>
-    <Directory  employees={employeesState} handleClickEvent={handleClickEvent}/>
+      <Header />
+      <Directory employees={employeesState} handleClickEvent={handleClickEvent} />
     </>
   );
 }
