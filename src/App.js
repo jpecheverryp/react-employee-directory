@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header"
 import Directory from "./components/Directory"
-
+import Search from "./components/Search"
 import getEmployees from "./utils/API";
 import './App.css'
 
@@ -24,6 +24,8 @@ function App() {
     direction: ''
   })
 
+  const [searchState, setSearchState] = useState('')
+
   useEffect(() => {
     getEmployees()
       .then(res => {
@@ -32,6 +34,10 @@ function App() {
       .catch(error => console.error(error));
 
   }, [])
+
+  function handleSearchChange(e) {
+    setSearchState(e.target.value)
+  }
 
   function handleClickEvent(e) {
     // Check which column is being selected
@@ -61,7 +67,8 @@ function App() {
   return (
     <>
       <Header />
-      <Directory employees={employeesState} handleClickEvent={handleClickEvent} />
+      <Search search={searchState} handleSearchChange={handleSearchChange} />
+      <Directory search={searchState} employees={employeesState} handleClickEvent={handleClickEvent} />
     </>
   );
 }

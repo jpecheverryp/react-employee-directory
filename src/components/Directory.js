@@ -1,8 +1,13 @@
 import React from "react";
 import EmployeeRow from "./EmployeeRow"
 import './Directory.css'
-function Directory({ employees, handleClickEvent }) {
+function Directory({ employees, handleClickEvent, search }) {
+    const filteredEmployees = employees.filter(employee => 
+        employee.name.toLowerCase().includes(search.toLowerCase())
+            ||
+        employee.email.toLowerCase().includes(search.toLowerCase())
 
+    )
     return (
         <table className="employees-table">
             <thead>
@@ -15,7 +20,7 @@ function Directory({ employees, handleClickEvent }) {
                 </tr>
             </thead>
             <tbody>
-                {employees.map(employee => {
+                {filteredEmployees.map(employee => {
                     return <EmployeeRow key={employee.id} {...employee} />
                 })}
 
