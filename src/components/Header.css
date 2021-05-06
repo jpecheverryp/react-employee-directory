@@ -1,0 +1,8 @@
+.header {
+    background: darkblue;
+    color: aliceblue;
+    margin: 0;
+    padding: 1rem;
+    border-bottom: red 2px solid;
+    text-align: center;
+}

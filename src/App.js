@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import Directory from "./components/Directory"
 
 import getEmployees from "./utils/API";
+import './App.css'
 
 function App() {
   const [employeesState, setEmployeesState] = useState([
